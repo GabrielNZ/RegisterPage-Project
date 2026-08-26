@@ -1,0 +1,19 @@
+.cadastro-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.forms-div {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+}
+.content-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 16px;
+}
+.actions-div {
+    gap: 5px;
+}

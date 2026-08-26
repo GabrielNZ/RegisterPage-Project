@@ -1,1 +1,52 @@
-<p>cadastro works!</p>
+<div class="cadastro-div">
+    <div class="forms-div">
+        <form class="mt-60" #clienteFrm="ngForm">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Cadastro de Cliente</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="mt-20">
+                    <div class="content-div">
+                        <mat-form-field class="full-width">
+                           <mat-label>Nome: </mat-label>
+                           <input matInput type="text" placeholder="Ex: Gabriel Zimmermann" name="nome" required >
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="content-div">
+                        <mat-form-field class="full-width">
+                           <mat-label>Email: </mat-label>
+                           <input matInput type="email" placeholder="Digite seu Email" name="email" required >
+                        </mat-form-field>
+                    </div>
+                    <div class="content-div">
+                        <mat-form-field class="full-width">
+                           <mat-label>CPF: </mat-label>
+                           <input matInput type="text" placeholder="Ex: 123.456.789-00" name="cpf" required >
+                        </mat-form-field>
+                    </div>
+                    <div class="content-div">
+                        <mat-form-field class="full-width">
+                           <mat-label>Data de Nascimento: </mat-label>
+                           <input matInput type="text" placeholder="Ex: 01/01/2000" name="dataNascimento" required >
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions class="actions-div ml-5">
+                  <button mat-flat-button color="primary">
+                    <mat-icon fontIcon="save"></mat-icon>
+                    Salvar
+                  </button>
+                  <button mat-flat-button color="primary">
+                    <mat-icon fontIcon="refresh"></mat-icon>
+                    Recarregar
+                  </button>
+                  <button mat-flat-button color="accent">
+                    <mat-icon fontIcon="backspace"></mat-icon>
+                    Limpar
+                  </button>
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
+</div>
