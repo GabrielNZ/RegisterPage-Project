@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,9 +8,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { Cliente } from './cliente';
 import { ClienteService } from '../clienteService';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Brasilapi } from '../brasilapi';
+import { Estado, Municipio } from '../brasilapi.module';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
-  imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule],
+  imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, NgxMaskDirective, MatSelectModule, CommonModule],
+  providers: [provideNgxMask()],
   selector: 'app-cadastro',
   styleUrl: './cadastro.scss',
   templateUrl: './cadastro.html',
@@ -18,8 +26,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CadastroComponent {
   cliente: Cliente = Cliente.newCliente();
   atualizando: boolean = false;
+  snack: MatSnackBar = inject(MatSnackBar);
+  estados: Estado[] = [];
+  municipios: Municipio[] = [];
 
-  constructor(private clienteService: ClienteService, private route: ActivatedRoute, private router : Router) {
+  constructor(private clienteService: ClienteService, private route: ActivatedRoute, private router : Router, private brasilapi: Brasilapi) {
 
   }
   ngOnInit(): void {
@@ -34,16 +45,36 @@ export class CadastroComponent {
         }
       }
     })
-
+    this.carregarUfs();
   }
 
   cadastrarCliente() {
     if (!this.atualizando) {
       this.clienteService.cadastrarCliente(this.cliente);
       this.cliente = Cliente.newCliente();
+      this.mostrarMensagem('Cliente cadastrado com sucesso!');
     } else {
       this.clienteService.atualizarCliente(this.cliente);
       this.router.navigate(['/consulta']);
+      this.mostrarMensagem('Cliente salvo com sucesso!');
     }
+  }
+
+  carregarUfs() {
+    this.brasilapi.listarUFs().subscribe({
+      next: (estados) => {
+        this.estados = estados;
+        console.log('UFs carregadas:', this.estados);
+      },
+      error: (error) => {
+        console.error('Erro ao carregar UFs:', error);
+      }
+    })
+  }
+
+  mostrarMensagem(mensagem: string) {
+    this.snack.open(mensagem, 'Fechar', {
+      duration: 3000,
+    });
   }
 }
