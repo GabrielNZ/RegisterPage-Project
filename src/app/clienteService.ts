@@ -16,6 +16,10 @@ export class ClienteService {
         }
         return this.obterStorage()
     }
+    pesquisarClientePorId(id: string): Cliente {
+        const cliente = this.obterStorage()
+        return cliente.find(cliente => cliente.id === id) || Cliente.newCliente();
+    }
 
     private obterStorage(): Cliente[] {
         const clientes = localStorage.getItem(ClienteService.REPO_CLIENTES);
