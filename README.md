@@ -1,6 +1,8 @@
 # 👤 RegisterPage Project
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/GabrielNZ/FinalProject-AppAgendamento/blob/main/LICENSE)
 
+### [English Version](./READMEus.md)
+
 ## Estrutura do Projeto
 
 Uma pagina de registro de usuários, na qual se pode cadastrar Nome, Email, CPF, Data de Nascimento, UF e Municípios.
