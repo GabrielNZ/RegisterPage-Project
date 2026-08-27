@@ -9,9 +9,11 @@ export class ClienteService {
         const storage = this.obterStorage();
         storage.push(cliente);
         localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
-        console.log(this.obterStorage())
     }
     pesquisarCliente(nome: string): Cliente[] {
+        if (nome) {
+        return this.obterStorage().filter(cliente => cliente.nome?.toLowerCase().includes(nome.toLowerCase()));
+        }
         return this.obterStorage()
     }
 
