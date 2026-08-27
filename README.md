@@ -1,59 +1,50 @@
-# CrudAngularMaterial
+# 👤 RegisterPage Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.5.
+## Estrutura do Projeto
 
-## Development server
+Uma pagina de registro de usuários, na qual se pode cadastrar Nome, Email, CPF, Data de Nascimento, UF e Municípios.
 
-To start a local development server, run:
+Decidi realizar um projeto na qual tivesse uma ideia simples ( CRUD de Usuários ), porem que levasse ao extremo da profissionalidade para um Software profissionais (APIs Dinâmicas, Mascaras, Pesquisa, etc).
 
+## 📃 Features:
+- CRUD completo de usuário
+- UF e Municípios resgatados via API e HttpService
+- Municípios dinâmicos baseados na UF
+- Rotas dinâmicas com parâmetros
+- Pesquisa de usuários baseado no nome
+- Mascara dinâmica em campos como CPF e Data de Nascimento
+
+## ✨ Front end
+
+<img width="1876" height="921" alt="image" src="https://github.com/user-attachments/assets/898945e4-cf67-4458-8ca3-dc05e370177c" />
+<img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/3786ccb3-eb34-4967-af3d-6b7d7b3c1b21" />
+
+# 🚦 Como Executar o Projeto
+### 🛠 Pré-requisitos
+- Git
+- VSCode
+- NodeJS
+### 🚀 Como rodar na minha máquina?
+1. Clone o repositório: `git clone https://github.com/GabrielNZ/RegisterPage-Project`.
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🎯 Tecnologias
+### Back end
+- LocalStorage
+- BrasilAPI
+### Front end
+- Angular
+- Angular Material
+- TypeScript
+- HTML
+- CSS
+### Implementation
+- DataBase: LocalStorage
+## Autor
 
-## Code scaffolding
+Gabriel Nicolodi Zimmermann
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[https://www.linkedin.com/in/gabriel-n-zimmermann-aba618338/]
