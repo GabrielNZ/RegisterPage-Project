@@ -1,4 +1,5 @@
 # 👤 RegisterPage Project
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/GabrielNZ/FinalProject-AppAgendamento/blob/main/LICENSE)
 
 ## Estrutura do Projeto
 
