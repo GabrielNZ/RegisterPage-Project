@@ -7,6 +7,8 @@ Uma pagina de registro de usuários, na qual se pode cadastrar Nome, Email, CPF,
 
 Decidi realizar um projeto na qual tivesse uma ideia simples ( CRUD de Usuários ), porem que levasse ao extremo da profissionalidade para um Software profissionais (APIs Dinâmicas, Mascaras, Pesquisa, etc).
 
+Projeto puramente Frontend Angular, ou seja, sem Backend próprio, tendo seus dados salvos no LocalStorage
+
 ## 📃 Features:
 - CRUD completo de usuário
 - UF e Municípios resgatados via API e HttpService
