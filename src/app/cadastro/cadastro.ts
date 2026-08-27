@@ -12,7 +12,7 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Brasilapi } from '../brasilapi';
 import { Estado, Municipio } from '../brasilapi.module';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 
 
@@ -42,6 +42,10 @@ export class CadastroComponent {
         if (clienteEncontrado) {
           this.cliente = clienteEncontrado;
           this.atualizando = true;
+          if(this.cliente.uf) {
+            const event = { value: this.cliente.uf }
+            this.carregarMunicipios(event as MatSelectChange);
+          }
         }
       }
     })
@@ -59,17 +63,32 @@ export class CadastroComponent {
       this.mostrarMensagem('Cliente salvo com sucesso!');
     }
   }
-
+  limpar() {
+    this.cliente = Cliente.newCliente();
+    this.mostrarMensagem('Limpo com sucesso!');
+    this.municipios = [];
+  }
   carregarUfs() {
     this.brasilapi.listarUFs().subscribe({
       next: (estados) => {
         this.estados = estados;
-        console.log('UFs carregadas:', this.estados);
       },
       error: (error) => {
         console.error('Erro ao carregar UFs:', error);
       }
     })
+  }
+
+  carregarMunicipios(event: MatSelectChange) {
+    const uf = event.value;
+    this.brasilapi.listarMunicipios(uf).subscribe({
+      next: (municipios) => {
+        this.municipios = municipios;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar municípios:', error);
+      }
+    });
   }
 
   mostrarMensagem(mensagem: string) {

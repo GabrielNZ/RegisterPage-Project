@@ -14,6 +14,6 @@ export class Brasilapi {
     }
 
     listarMunicipios(uf: string): Observable<Municipio[]> {
-        return this.http.get<Municipio[]>(this.baseUrl + '/ibge/uf/v1');
+        return this.http.get<Municipio[]>(this.baseUrl + '/ibge/municipios/v1/' + uf);
     }
 }
