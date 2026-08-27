@@ -9,10 +9,20 @@ export class ClienteService {
         const storage = this.obterStorage();
         storage.push(cliente);
         localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
+        console.log(this.obterStorage())
     }
-    obterStorage(): Cliente[] {
+    pesquisarCliente(nome: string): Cliente[] {
+        return this.obterStorage()
+    }
+
+    private obterStorage(): Cliente[] {
         const clientes = localStorage.getItem(ClienteService.REPO_CLIENTES);
-        return clientes ? JSON.parse(clientes) : localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify([])), [];
+        if (clientes) {
+            return JSON.parse(clientes);
+        } else {
+            localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify([]));
+        }
+        return [];
     }
 }
     

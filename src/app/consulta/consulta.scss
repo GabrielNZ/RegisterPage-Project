@@ -1,0 +1,19 @@
+.container-consulta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.div-consulta {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+}
+.container-content {
+    display: flex;
+    flex-direction: row;
+}
+.div-content {
+    display: flex;
+    flex-direction: column;
+    width: 950px;
+}
