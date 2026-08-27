@@ -12,13 +12,22 @@ export class ClienteService {
     }
     pesquisarCliente(nome: string): Cliente[] {
         if (nome) {
-        return this.obterStorage().filter(cliente => cliente.nome?.toLowerCase().includes(nome.toLowerCase()));
+            return this.obterStorage().filter(cliente => cliente.nome?.toLowerCase().includes(nome.toLowerCase()));
         }
         return this.obterStorage()
     }
     pesquisarClientePorId(id: string): Cliente {
         const cliente = this.obterStorage()
         return cliente.find(cliente => cliente.id === id) || Cliente.newCliente();
+    }
+    atualizarCliente(cliente: Cliente) {
+        const storage = this.obterStorage();
+        storage.forEach((c) => {
+            if (c.id === cliente.id) {
+                Object.assign(c, cliente);
+            }
+        })
+        localStorage.setItem(ClienteService.REPO_CLIENTES, JSON.stringify(storage));
     }
 
     private obterStorage(): Cliente[] {
@@ -31,4 +40,3 @@ export class ClienteService {
         return [];
     }
 }
-    

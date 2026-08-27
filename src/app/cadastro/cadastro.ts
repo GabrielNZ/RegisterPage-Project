@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Cliente } from './cliente';
 import { ClienteService } from '../clienteService';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule],
@@ -19,7 +19,7 @@ export class CadastroComponent {
   cliente: Cliente = Cliente.newCliente();
   atualizando: boolean = false;
 
-  constructor(private clienteService: ClienteService, private route: ActivatedRoute) {
+  constructor(private clienteService: ClienteService, private route: ActivatedRoute, private router : Router) {
 
   }
   ngOnInit(): void {
@@ -38,7 +38,12 @@ export class CadastroComponent {
   }
 
   cadastrarCliente() {
-    this.clienteService.cadastrarCliente(this.cliente);
-    this.cliente = Cliente.newCliente();
+    if (!this.atualizando) {
+      this.clienteService.cadastrarCliente(this.cliente);
+      this.cliente = Cliente.newCliente();
+    } else {
+      this.clienteService.atualizarCliente(this.cliente);
+      this.router.navigate(['/consulta']);
+    }
   }
 }
